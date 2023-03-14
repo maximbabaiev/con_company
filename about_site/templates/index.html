@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Oswald:wght@400;500;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+<ul id="slide-out" class="sidenav">
+    <li><a href="#!"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="#!"><i class="material-icons">people</i>About Us</a></li>
+    <li><a href="#!"><i class="material-icons">grade</i>Services</a></li>
+    <li><a href="#!"><i class="material-icons">phone</i>Contacts</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a href="#!" class="sidenav-close"><i class="material-icons">close</i>Closed</a></li>
+
+</ul>
+
+<header class="header">
+    <div class="container">
+        <div class="header__title">
+            <img src="{% static 'img/logo.svg' %}" alt="logo" class="logo">
+            <a class="burger sidenav-trigger" data-target="slide-out">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </a>
+        </div>
+        <h1 class="h1">We implement the largest projects in the world</h1>
+        <h4 class="h4">Stadiums, pipelines, bridges, dams</h4>
+    </div>
+</header>
+<section class="about">
+    <div class="info">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__grid-item">
+                    <h4 class="about__h4">26</h4>
+                    <h5 class="about__h5">Years</h5>
+                    <p class="about__p">on the market</p>
+                </div>
+                <div class="about__grid-item">
+                    <h4 class="about__h4">26</h4>
+                    <h5 class="about__h5">Years</h5>
+                    <p class="about__p">on the market</p>
+                </div>
+                <div class="about__grid-item">
+                    <h4 class="about__h4">26</h4>
+                    <h5 class="about__h5">Years</h5>
+                    <p class="about__p">on the market</p>
+                </div>
+                <div class="about__grid-item">
+                    <h4 class="about__h4">26</h4>
+                    <h5 class="about__h5">Years</h5>
+                    <p class="about__p">on the market</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="text-h2 project-h2">Our biggest projects</h2>
+        <div class="about__flex">
+            {% csrf_token %}
+            {% for project in projects %}
+                <div class="about__flex-item">
+                    <img src="data:image/jpg;base64, {{ project.base_64 }}" alt="{{ project.name }}" class="project-img">
+                    <div class="rectangle"></div>
+                    <h3 class="text-h3 project-h3">{{ project.name }}</h3>
+                    <p class="text-p project-p">{{ project.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur ab fugiat velit quasi, debitis ex quo
+            sunt autem voluptates excepturi laboriosam reprehenderit voluptas repellendus eos ut ipsam doloremque
+            aspernatur dolore! Perferendis repudiandae ea, molestiae ullam dicta doloremque optio tempora dolore nemo
+            nam sint accusantium ad officiis voluptatem assumenda, atque officia nisi expedita enim consectetur quas!
+            Dolore tempore voluptate, numquam hic ipsum repellat? Perferendis, doloremque. Sequi, sint praesentium amet
+            tempora quas similique, vel voluptatem itaque aspernatur distinctio aliquid, dignissimos facilis ab
+            provident. Rem eligendi perferendis molestiae vitae itaque dolorum minima odio at. Fuga aliquam consequatur
+            delectus labore amet illum sed ea.</p>
+    </div>
+</div>
+
+<section class="request">
+    <div class="container">
+        <div class="request__flex">
+            <div class="request__flex-left">
+                <h4 class="request__h4">The smartest projects</h4>
+                <h5 class="request__h5">We implement the most daring solutions in the world</h5>
+            </div>
+            <div class="request__flex-right">
+                <a class="request__btn modal-trigger" href="#modal1">
+                    <img src="{% static 'img/email_icon.svg' %}" alt="Envelope" class="request__icon">
+                    Your request
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+        <h2 class="text-h2 section-h2">What are we doing?</h2>
+        <div class="services__grid">
+            <div class="services__grid-item">
+                <img class="services__icon" src="{% static 'img/services.svg' %}" alt="services">
+                <h4 class="text-h4 services__h4">Construction of office buildings</h4>
+            </div>
+            <div class="services__grid-item">
+                <img class="services__icon" src="{% static 'img/services.svg' %}" alt="services">
+                <h4 class="text-h4 services__h4">Construction of office buildings</h4>
+            </div>
+            <div class="services__grid-item">
+                <img class="services__icon" src="{% static 'img/services.svg' %}" alt="services">
+                <h4 class="text-h4 services__h4">Construction of office buildings</h4>
+            </div>
+            <div class="services__grid-item">
+                <img class="services__icon" src="{% static 'img/services.svg' %}" alt="services">
+                <h4 class="text-h4 services__h4">Construction of office buildings</h4>
+            </div>
+            <div class="services__grid-item">
+                <img class="services__icon" src="{% static 'img/services.svg' %}" alt="services">
+                <h4 class="text-h4 services__h4">Construction of office buildings</h4>
+            </div>
+            <div class="services__grid-item">
+                <img class="services__icon" src="{% static 'img/services.svg' %}" alt="services">
+                <h4 class="text-h4 services__h4">Construction of office buildings</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="portfolio">
+    <div class="portfolion__grid">
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+        <div class="portfolio__grid-item">
+            <img class="portfolio__img materialboxed" src="{% static 'img/portfolio.jpg' %}" alt="portfolio-item">
+        </div>
+    </div>
+</section>
+
+<section class="question">
+    <div class="container">
+        <h2 class="text-h2 section-h2">Answers on questions</h2>
+        <div class="question_items">
+            <details class="question_item">
+                <summary class="text-h3 question_h3">Do you work under the building code?</summary>
+                <p class="text-p question_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illum
+                    pariatur tempore nisi omnis officiis consequuntur! Fugiat eveniet necessitatibus totam atque
+                    sapiente optio quibusdam, tempore placeat, quo non, sint saepe!</p>
+            </details>
+            <details class="question_item">
+                <summary class="text-h3 question_h3">Do you work under the building code?</summary>
+                <p class="text-p question_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illum
+                    pariatur tempore nisi omnis officiis consequuntur! Fugiat eveniet necessitatibus totam atque
+                    sapiente optio quibusdam, tempore placeat, quo non, sint saepe!</p>
+            </details>
+            <details class="question_item">
+                <summary class="text-h3 question_h3">Do you work under the building code?</summary>
+                <p class="text-p question_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illum
+                    pariatur tempore nisi omnis officiis consequuntur! Fugiat eveniet necessitatibus totam atque
+                    sapiente optio quibusdam, tempore placeat, quo non, sint saepe!</p>
+            </details>
+            <details class="question_item">
+                <summary class="text-h3 question_h3">Do you work under the building code?</summary>
+                <p class="text-p question_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam illum
+                    pariatur tempore nisi omnis officiis consequuntur! Fugiat eveniet necessitatibus totam atque
+                    sapiente optio quibusdam, tempore placeat, quo non, sint saepe!</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<section class="partners">
+    <div class="container">
+        <h2 class="text-h2 partners__h2">Our partners</h2>
+        <div class="partners__flex">
+            <div class="partners__item">
+                <img src="{% static 'img/partners.png' %}" alt="partners">
+            </div>
+            <div class="partners__item">
+                <img src="{% static 'img/partners.png' %}" alt="partners">
+            </div>
+            <div class="partners__item">
+                <img src="{% static 'img/partners.png' %}" alt="partners">
+            </div>
+            <div class="partners__item">
+                <img src="{% static 'img/partners.png' %}" alt="partners">
+            </div>
+            <div class="partners__item">
+                <img src="{% static 'img/partners.png' %}" alt="partners">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+    <div class="container">
+        <h2 class="text-h2 reviews__h2">Reviews about working with us</h2>
+        <div class="reviews__grid">
+            <div class="reviews__grid-item">
+                <div class="reviews__card">
+                    <div class="reviews__quotes">“</div>
+                    <p class="text-p--reviews">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil eum
+                        deleniti corrupti sunt autem odio non laboriosam exercitationem voluptates assumenda, ut ex
+                        laudantium incidunt eius voluptas maxime et ipsam voluptate.</p>
+                </div>
+                <h4 class="text-h4">Some Name, <span class="reviews__author-accent">Some company</span></h4>
+            </div>
+            <div class="reviews__grid-item">
+                <div class="reviews__card">
+                    <div class="reviews__quotes">“</div>
+                    <p class="text-p--reviews">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil eum
+                        deleniti corrupti sunt autem odio non laboriosam exercitationem voluptates assumenda, ut ex
+                        laudantium incidunt eius voluptas maxime et ipsam voluptate.</p>
+                </div>
+                <h4 class="text-h4">Some Name, <span class="reviews__author-accent">Some company</span></h4>
+            </div>
+            <div class="reviews__grid-item">
+                <div class="reviews__card">
+                    <div class="reviews__quotes">“</div>
+                    <p class="text-p--reviews">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil eum
+                        deleniti corrupti sunt autem odio non laboriosam exercitationem voluptates assumenda, ut ex
+                        laudantium incidunt eius voluptas maxime et ipsam voluptate.</p>
+                </div>
+                <h4 class="text-h4">Some Name, <span class="reviews__author-accent">Some company</span></h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="request">
+    <div class="container">
+        <div class="request__flex">
+            <div class="request__flex-left">
+                <h4 class="request__h4">Do you want to work with us?</h4>
+                <h5 class="request__h5">Leave a request and we will contact you!</h5>
+            </div>
+            <div class="request__flex-right">
+                <a class="request__btn modal-trigger" href="#modal1">
+                    <img src="{% static 'img/email_icon.svg' %}" alt="Envelope" class="request__icon">
+                    Your request
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contacts">
+    <div class="container">
+        <h2 class="text-h2 contacts__h2">Contacts</h2>
+        <div class="contacts__grid">
+            <div class="contacts__item">
+                <img class="contacts_icon" src="{% static 'img/address-icon.svg' %}" alt="Map icon">
+                <h3 class="text-h3 contacts__h3 contacts_h3-grey">Address:</h3>
+                <h3 class="text-h3 contacts__h3">2-a, Yury Gagarin Avenue</h3>
+            </div>
+            <div class="contacts__item">
+                <img class="contacts_icon" src="{% static 'img/phone-icon.svg' %}" alt="Phone">
+                <h3 class="text-h3 contacts__h3 contacts_h3-grey">Phone:</h3>
+                <h3 class="text-h3 contacts__h3">
+                    <a href="tel:11111111111" class="text__a-phone">1 (111) 111-11-11</a>
+                    <br>
+                    <a href="tel:22222222222" class="text__a-phone">2 (222) 222-22-22</a>
+                </h3>
+            </div>
+            <div class="contacts__item">
+                <img class="contacts_icon" src="{% static 'img/working-hours-icon.svg' %}" alt="working-hours">
+                <h3 class="text-h3 contacts__h3 contacts_h3-grey">Working hours:</h3>
+                <h3 class="text-h3 contacts__h3">Mon-Sat<br>10:00 - 20:00</h3>
+            </div>
+            <div class="contacts__item">
+                <img class="contacts_icon" src="{% static 'img/email-icon-cotacts.svg' %}" alt="working-hours">
+                <h3 class="text-h3 contacts__h3 contacts_h3-grey">E-mail:</h3>
+                <h3 class="text-h3 contacts__h3 contacts_h3-accent">
+                    <a href="mailto:Email@mail.com" class="text__a-email">Email@mail.com</a>
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__flex">
+            <p class="text-p footer__copyright">© 2019 Construction company</p>
+            <p class="text-p footer__brand">Developed by the best studios</p>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
